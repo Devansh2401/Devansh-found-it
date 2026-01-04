@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Campus Found-It | Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<div class="page-veil">
+    <div class="app-container">
+        <header class="header">
+            <div class="brand">
+                <h1>📍 Campus Found-It</h1>
+                <p>Institutional Recovery Network</p>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-found hover-lift" onclick="showForm('found')">📢 Report Found</button>
+                <button class="btn btn-lost hover-lift" onclick="showForm('lost')">🔍 Request Lost</button>
+            </div>
+        </header>
+
+        <section class="controls">
+            <div class="search-wrapper glass">
+                <input type="text" id="searchInput" placeholder="Search items or locations..." onkeyup="filterFeed()">
+            </div>
+            <div class="tab-center-wrapper">
+                <div class="tab-bar glass">
+                    <button class="tab-btn active" id="tabFound" onclick="switchTab('found')">Found Items</button>
+                    <button class="tab-btn" id="tabLost" onclick="switchTab('lost')">Lost Requests</button>
+                </div>
+            </div>
+        </section>
+
+        <main class="feed-viewport">
+            <div id="foundFeed" class="item-grid"></div>
+            <div id="lostFeed" class="item-grid" style="display:none;"></div>
+        </main>
+
+        <footer class="footer">
+            <div class="dev-profile glass hover-glow">
+                <div class="pfp-wrapper">
+                    <img src="pfp1.png" alt="Dev">
+                </div>
+                <div class="dev-text">
+                    <strong>Devansh Katariya</strong>
+                    <span>Lead Developer</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<div id="formOverlay" class="modal-overlay" onclick="hideForm()">
+    <div class="modal-card glass-modal" onclick="event.stopPropagation()">
+        <button class="close-btn-round" onclick="hideForm()">✕</button>
+        <div class="modal-header">
+            <h2 id="formTitle">Report Item</h2>
+        </div>
+        
+        <div class="modal-scroll-area">
+            <div class="form-section">
+    <p class="section-tag">1. Visuals</p>
+    <div class="stack-v">
+        <label class="upload-area hover-soft">
+            <input type="file" id="imageInput" accept="image/*" onchange="updateFileName()">
+            <div class="upload-content">
+                <span>📸</span>
+                <span id="fileNameDisplay">Upload Item Photo</span>
+            </div>
+        </label>
+        <button id="aiBtn" class="ai-btn-premium hover-lift">✨ Smart AI Analysis</button>
+        
+        <div class="status-container" style="margin-top: 10px;">
+            <div id="status" class="status-chip">● System Ready</div>
+        </div>
+    </div>
+</div>
+
+            <div class="form-section">
+                <p class="section-tag">2. Location & Identification</p>
+                <div class="details-box">
+                    <input type="text" id="manualDesc" class="input-modern" placeholder="Item Name">
+                    <select id="itemCat" class="input-modern">
+                        <option value="General">Category: General</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Documents">ID / Documents</option>
+                        <option value="Personal">Personal Items</option>
+                    </select>
+                    <input type="text" id="manualLoc" class="input-modern" placeholder="Exact Location">
+                    <button class="geo-btn-modern hover-lift" id="geoBtn">📍 Tag GPS Location</button>
+                    <textarea id="extraNotes" class="input-modern area-modern" placeholder="Additional details (Brand, Color, Unique marks)..."></textarea>
+                    <input type="hidden" id="lat"><input type="hidden" id="lng">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <p class="section-tag">3. Contact Credentials</p>
+                <div class="details-box">
+                    <input type="text" id="finderName" class="input-modern" placeholder="Your Name">
+                    <input type="text" id="finderContact" class="input-modern" placeholder="Phone / Email">
+                </div>
+            </div>
+
+            <button id="mainBtn" class="submit-btn-premium hover-glow">🚀 Publish Report</button>
+        
+        </div>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
