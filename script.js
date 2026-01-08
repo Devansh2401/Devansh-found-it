@@ -6,7 +6,7 @@ const firebaseConfig = {
     storageBucket: "campusfoundit.firebasestorage.app",
     appId: "1:151417592098:web:1cb43b26bdb596236e2d7b"
 };
-const GEMINI_KEY = "AIzaSyBNAXBECmk9rfRpXnXxshV7RRZUCy8gDg8";
+const GEMINI_KEY = "AIzaSyD3txOpUHyIhcKmPv2x0-e0OCs_nAzpOgI";
 
 
 firebase.initializeApp(firebaseConfig);
