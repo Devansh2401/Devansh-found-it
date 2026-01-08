@@ -181,7 +181,7 @@ function loadFeed(collection, elementId) {
                         ${item.details ? `<p style="font-size:12px; color:var(--slate); margin-bottom:12px; font-style:italic;">"${item.details}"</p>` : ''}
                         
                         <div style="background:#f0fdf4; padding:12px; border-radius:16px; font-size:13px; margin-top:auto; border:1px solid #dcfce7;">
-                            <strong>Found By:</strong> ${item.userName}<br>
+                            <strong>Contact:</strong> ${item.userName}<br>
                             <span style="color:var(--accent); font-weight:700;">📞 ${item.contactInfo}</span>
                         </div>
 
